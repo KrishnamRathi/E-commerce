@@ -1,16 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { StyleSheet, Text, View, Button } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage';
+import { Context as AuthContext } from '../../context/AuthContext'
 
 export default function Select({navigation}) {
 
-    const login = async () =>{
-        try{
-            await AsyncStorage.setItem("isLogin", "true")
-        }catch(e){
-            console.log(e);
-        }
-    }
+    const { login } = useContext(AuthContext);
+    
 
     return (
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { View, Text } from 'react-native';
 import { createStackNavigator, Header } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -7,7 +7,7 @@ import Select from './screens/selectLanguage/Select'
 import LoginScreen from './screens/signIn/LoginScreen'
 import HomeScreen from './screens/home/HomeScreen'
 import AsyncStorage from '@react-native-community/async-storage';
-import { set } from 'react-native-reanimated';
+import { Context as AuthContext } from './context/AuthContext'
 
 
 
@@ -42,7 +42,8 @@ const SplashScreen = () => (
     </View>
 )
 
-const selectFlow =  (flow, setFlow) => {
+
+const selectFlow =  (flow) => {
 
     switch (flow) {
         case 0:
@@ -56,22 +57,23 @@ const selectFlow =  (flow, setFlow) => {
     }
 }
 
+
 export default function Flows() {
     const [flow, setFlow] = useState(0);
+    const {state} =useContext(AuthContext)
+
+    console.log(state)
     useEffect(() => {
         const set = async ()=>{
             try {
-                
                 const res=await AsyncStorage.getItem('isLogin');
                 res!=null ? setFlow(2) : setFlow(1);
-                console.log(res)
+                //  console.log(res)    
             } catch (err) {
                 console.log(err + "**")
             }
         }
         setTimeout(() => set(), 1500);
-    });
-
-    console.log();
-    return selectFlow(flow, setFlow)
+    }, [state]);
+    return selectFlow(flow)
 }

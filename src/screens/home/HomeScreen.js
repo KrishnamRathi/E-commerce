@@ -1,18 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { StyleSheet, Text, View, Button } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
+import { Context as AuthContext } from '../../context/AuthContext'
 
 
 
 export default function HomeScreen({navigation}) {
-
-    const logout = async () => {
-        try{
-            await AsyncStorage.removeItem("isLogin")
-        }catch(e){
-            console.log(e)
-        }
-    }
+    const { logout } = useContext(AuthContext);
 
     return (
         <View>
