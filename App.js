@@ -8,14 +8,17 @@ import en from './src/locales/en.json'
 import hi from './src/locales/hi.json'
 import Flows from './src/Flows'
 import { Provider as AuthProvider } from './src/context/AuthContext'
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <AuthProvider>
-        <Flows/>
-      </AuthProvider>
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <AuthProvider>
+          <Flows />
+        </AuthProvider>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
 

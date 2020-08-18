@@ -1,19 +1,132 @@
 import React, { useContext } from 'react'
-import { StyleSheet, Text, View, Button } from 'react-native'
-import AsyncStorage from '@react-native-community/async-storage'
+import { StyleSheet, Text, View, ScrollView, FlatList, Image, Button } from 'react-native'
 import { Context as AuthContext } from '../../context/AuthContext'
+import { styles } from '../../styles/styles'
+import { Header } from 'react-native-elements'
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { SliderBox } from "react-native-image-slider-box";
+import CardComponent from '../../components/CardComponent'
+import FilterButton from '../../components/FilterButton'
+import { abs } from 'react-native-reanimated'
+
+const data = [
+    {
+        id: 'jhvf7t3fj',
+        title: 'Macbook air',
+        category: 'Electronics',
+        price: '100000',
+        image: ['https://images-na.ssl-images-amazon.com/images/I/51TdkJSqeQL._SL1000_.jpg'],
+    },
+    {
+        id: 'jhvf7tjj',
+        title: 'Macbook pro',
+        category: 'Electronics',
+        price: '200000',
+        image: ['https://www.notebookcheck.net/uploads/tx_nbc2/Bildschirmfoto_2019-10-01_um_12.20.11.png'],
+    },
+    {
+        id: 'jhvf7tjpop',
+        title: 'Mustang',
+        category: 'Automobile',
+        price: '6000000',
+        image: ['https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2021-ford-mustang-mach-1-109-1592231891.jpg?crop=0.801xw:0.601xh;0.159xw,0.156xh&resize=1200:*'],
+    },
+    {
+        id: 'jhvf7t3fz',
+        title: 'Macbook air',
+        category: 'Electronics',
+        price: '100000',
+        image: ['https://images-na.ssl-images-amazon.com/images/I/51TdkJSqeQL._SL1000_.jpg'],
+    },
+]
+
+const images = [
+    "https://www.notebookcheck.net/uploads/tx_nbc2/Bildschirmfoto_2019-10-01_um_12.20.11.png",
+    "https://images-na.ssl-images-amazon.com/images/I/51TdkJSqeQL._SL1000_.jpg",
+    "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2021-ford-mustang-mach-1-109-1592231891.jpg?crop=0.801xw:0.601xh;0.159xw,0.156xh&resize=1200:*",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTo-zwMx0l8_edLNBwt9xpk6yf25JOB2pbeYw&usqp=CAU"
+]
 
 
-
-export default function HomeScreen({navigation}) {
+export default function HomeScreen({ navigation }) {
     const { logout } = useContext(AuthContext);
 
+    const filters = [
+        'Price: high to low',
+        'Price: low to high'
+    ]
+
     return (
-        <View>
-            <Text>Home</Text>
-            <Button title='Log out' onPress={() => logout()} />
-        </View>
+        <SafeAreaView>
+            <Header
+                leftComponent={{ icon: 'menu', color: '#178ae8', onPress: () => navigation.openDrawer() }}
+                centerComponent={{ text: 'Shoppp', style: { color: '#178ae8', fontSize: 20 } }}
+                containerStyle={{
+                    backgroundColor: '#edf0f2',
+                }}
+            />
+            <FlatList
+                ListHeaderComponent={
+                    <View>
+                        <SliderBox
+                            images={images}
+                            sliderBoxHeight={250}
+                            autoplay
+                            dotColor="#178ae8"
+                            circleLoop
+                            ImageComponentStyle={{ borderRadius: 15, width: '97%', marginTop: 10 }}
+                            imageLoadingColor="#03fcc2"
+                        />
+                        {/* Frequently bought */}
+                        <View style={styles.content}>
+                            <Text style={styles.boldFont}>Frequently bought</Text>
+                            <FlatList
+                                data={images}
+                                keyExtractor={item => item}
+                                renderItem={({ item, i }) => <Image
+                                    style={styles.image}
+                                    source={{ uri: item }} />
+                                }
+                                horizontal
+                                showsHorizontalScrollIndicator={false}
+                            />
+                        </View>
+                        {/* Most Visited */}
+                        <View style={styles.content}>
+                            <Text style={styles.boldFont}>Most Visited</Text>
+                            <FlatList
+                                data={images}
+                                keyExtractor={item => item}
+                                renderItem={({ item, i }) => <Image
+                                    style={styles.image}
+                                    source={{ uri: item }} />
+                                }
+                                horizontal
+                                showsHorizontalScrollIndicator={false}
+                            />
+                        </View>
+                        <Text style={{margin: 10, textAlign: 'center', color: 'black', fontWeight: 'bold', fontSize: 20}}>Popular products</Text>
+                    </View>
+                }
+                data={data}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item, index }) => <CardComponent
+                    title={item.title}
+                    price={item.price}
+                    image={item.image} />
+                }
+                ListFooterComponent={
+                    <View style={{ marginBottom: 70, }}>
+                    </View>
+                }
+                showsVerticalScrollIndicator={false}
+            />
+            {/* <FilterButton title="Sort" /> */}
+            <FlatList data={filters}
+                keyExtractor={(i) => i}
+                renderItem={({item}) => <FilterButton title={item}/>}
+                horizontal
+            />
+        </SafeAreaView>
     )
 }
-
-const styles = StyleSheet.create({})
