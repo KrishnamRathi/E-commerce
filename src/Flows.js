@@ -5,6 +5,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Select from './screens/selectLanguage/Select'
 import LoginScreen from './screens/signIn/LoginScreen'
+import SignupScreen from './screens/signUp/SignupScreen'
 import HomeScreen from './screens/home/HomeScreen'
 import AsyncStorage from '@react-native-community/async-storage';
 import { Context as AuthContext } from './context/AuthContext'
@@ -19,6 +20,7 @@ const LoginScreens = () => (
     <LoginStack.Navigator initialRouteName='Select' >
         <LoginStack.Screen name="ChooseLanguage" component={Select} />
         <LoginStack.Screen name="LoginScreen" component={LoginScreen} />
+        <LoginStack.Screen name="SignupScreen" component={SignupScreen} />
     </LoginStack.Navigator>
 )
 
