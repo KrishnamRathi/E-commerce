@@ -8,7 +8,10 @@ import LoginScreen from './screens/signIn/LoginScreen'
 import HomeScreen from './screens/home/HomeScreen'
 import AsyncStorage from '@react-native-community/async-storage';
 import { Context as AuthContext } from './context/AuthContext'
-
+import CartScreen from './screens/home/CartScreen';
+import Profile from './screens/drawer/Profile'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import AntDesign from 'react-native-vector-icons/AntDesign'
 
 
 const LoginStack = createStackNavigator();
@@ -25,14 +28,31 @@ const LoginScreens = () => (
 
 const DrawerScreens = () => (
     <Drawer.Navigator>
-        <Drawer.Screen name="HomeScreen" component={HomeScreen} />
+        <Drawer.Screen name="Home" component={TabScreens} />
+        <Drawer.Screen name="Profile" component={Profile} />
+        <Drawer.Screen name="Logout" component={HomeScreen} />
     </Drawer.Navigator>
 )
 
 const TabScreens = () => (
     <Tab.Navigator>
-        <Tab.Screen name="Home" component={DrawerScreens} />
-        <Tab.Screen name="Cart" component={Select} />
+        <Tab.Screen name="Home" 
+            component={HomeScreen} 
+            options={{
+                tabBarIcon: ({focused}) => (
+                    <MaterialCommunityIcons name="home" color={focused? '#178ae8':'gray'} size={30} />
+                )
+            }}
+        />
+        <Tab.Screen name="Cart" 
+            component={CartScreen} 
+            options={{
+                tabBarIcon: ({focused}) => (
+                    <AntDesign name="shoppingcart" color={focused? '#178ae8':'gray'} size={30}/>
+                )
+            }}
+            
+        />
     </Tab.Navigator>
 )
 
@@ -51,7 +71,7 @@ const selectFlow =  (flow) => {
         case 1:
             return <LoginScreens />
         case 2:
-            return <TabScreens />
+            return <DrawerScreens />
         default:
             return <LoginScreens />
     }
@@ -62,7 +82,7 @@ export default function Flows() {
     const [flow, setFlow] = useState(0);
     const {state} =useContext(AuthContext)
 
-    console.log(state)
+    //console.log(state)
     useEffect(() => {
         const set = async ()=>{
             try {
