@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { StyleSheet, Text, View, ScrollView, FlatList, Image, Button } from 'react-native'
+import { StyleSheet, Text, View, ScrollView, FlatList, Image, TouchableOpacity } from 'react-native'
 import { Context as AuthContext } from '../../context/AuthContext'
 import { styles } from '../../styles/styles'
 import { Header } from 'react-native-elements'
@@ -83,9 +83,11 @@ export default function HomeScreen({ navigation }) {
                             <FlatList
                                 data={images}
                                 keyExtractor={item => item}
-                                renderItem={({ item, i }) => <Image
-                                    style={styles.image}
-                                    source={{ uri: item }} />
+                                renderItem={({ item, i }) => <TouchableOpacity>
+                                    <Image
+                                        style={styles.image}
+                                        source={{ uri: item }} />
+                                </TouchableOpacity>
                                 }
                                 horizontal
                                 showsHorizontalScrollIndicator={false}
@@ -97,15 +99,17 @@ export default function HomeScreen({ navigation }) {
                             <FlatList
                                 data={images}
                                 keyExtractor={item => item}
-                                renderItem={({ item, i }) => <Image
-                                    style={styles.image}
-                                    source={{ uri: item }} />
+                                renderItem={({ item, i }) => <TouchableOpacity>
+                                    <Image
+                                        style={styles.image}
+                                        source={{ uri: item }} />
+                                </TouchableOpacity>
                                 }
                                 horizontal
                                 showsHorizontalScrollIndicator={false}
                             />
                         </View>
-                        <Text style={{margin: 10, textAlign: 'center', color: 'black', fontWeight: 'bold', fontSize: 20}}>Popular products</Text>
+                        <Text style={{ margin: 10, textAlign: 'center', color: 'black', fontWeight: 'bold', fontSize: 20 }}>Popular products</Text>
                     </View>
                 }
                 data={data}
@@ -113,7 +117,8 @@ export default function HomeScreen({ navigation }) {
                 renderItem={({ item, index }) => <CardComponent
                     title={item.title}
                     price={item.price}
-                    image={item.image} />
+                    image={item.image}
+                    id={item.id}  />
                 }
                 ListFooterComponent={
                     <View style={{ marginBottom: 70, }}>
@@ -121,12 +126,17 @@ export default function HomeScreen({ navigation }) {
                 }
                 showsVerticalScrollIndicator={false}
             />
-            {/* <FilterButton title="Sort" /> */}
-            <FlatList data={filters}
+            <View style={styles.content}>
+
+                <View style={{ alignItems: 'flex-end' }}>
+                    <FilterButton title={'Filter'} />
+                </View>
+            </View>
+            {/* <FlatList data={filters}
                 keyExtractor={(i) => i}
                 renderItem={({item}) => <FilterButton title={item}/>}
                 horizontal
-            />
+            /> */}
         </SafeAreaView>
     )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
 import {styles} from '../styles/styles'
 
 function commaSeperated(x){
@@ -19,9 +19,12 @@ function commaSeperated(x){
 }
 
 
-export default function CardComponent({title, price, image}) {
+export default function CardComponent({title, price, image, id}) {
     return (
-        <View style={[styles.row, styles.boxOutline, styles.content]}>
+        <TouchableOpacity 
+            style={[styles.row, styles.boxOutline, styles.content]}
+            onPress={() => navigation.navigate('Details', {id: {id}})}
+        >
             <View style={styles.column}>
                 <Image
                     style={styles.image}
@@ -34,6 +37,6 @@ export default function CardComponent({title, price, image}) {
             <View style={styles.column}>
                 <Text style={styles.boldFont} >₹ {commaSeperated(price)}</Text>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }

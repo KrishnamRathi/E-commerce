@@ -48,8 +48,16 @@ export const styles = StyleSheet.create({
         zIndex: 100,
         position: 'absolute',
         bottom: 100,
-        margin: 10,
-        height: 20,
-        width: 100,
+        height: 40,
+        width: 80,
+        borderRadius: 8,
+        backgroundColor: '#178ae8',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    filterFont: {
+        fontSize: 15,
+        fontWeight: 'bold',
+        color: 'white'
     }
 })

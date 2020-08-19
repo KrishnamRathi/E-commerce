@@ -82,7 +82,7 @@ export default function Flows() {
     const [flow, setFlow] = useState(0);
     const {state} =useContext(AuthContext)
 
-    console.log(state)
+    //console.log(state)
     useEffect(() => {
         const set = async ()=>{
             try {
