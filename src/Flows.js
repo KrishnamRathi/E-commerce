@@ -22,10 +22,10 @@ const Tab = createBottomTabNavigator();
 const HomeStack = createStackNavigator();
 
 const LoginScreens = () => (
-    <LoginStack.Navigator initialRouteName='Select' >
+    <LoginStack.Navigator initialRouteName='Select'>
         <LoginStack.Screen name="ChooseLanguage" component={Select} />
-        <LoginStack.Screen name="LoginScreen" component={LoginScreen} />
-        <LoginStack.Screen name="SignupScreen" component={SignupScreen} />
+        <LoginStack.Screen name="LoginScreen" component={LoginScreen} options={{headerShown:false}}/>
+        <LoginStack.Screen name="SignupScreen" component={SignupScreen} options={{headerShown:false}}/>
     </LoginStack.Navigator>
 )
 

@@ -1,5 +1,9 @@
 import React, { useContext } from 'react'
+<<<<<<< HEAD
 import { StyleSheet, Text, View, ScrollView, FlatList, Image, TouchableOpacity, Button } from 'react-native'
+=======
+import { StyleSheet, Text, View, ScrollView, FlatList, Image, TouchableOpacity,Button } from 'react-native'
+>>>>>>> a3c4d37b86d1fef657eecb28baa364f4544848a1
 import { Context as AuthContext } from '../../context/AuthContext'
 import { styles } from '../../styles/styles'
 import { Header } from 'react-native-elements'

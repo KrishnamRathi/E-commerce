@@ -89,12 +89,44 @@ export const styles = StyleSheet.create({
         backgroundColor: '#178ae8',
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 10
+        borderRadius: 10,
     },
     buttonText:{
         fontSize: 15,
         fontWeight: 'bold',
-        color: 'white'
+        color: 'white',
+    },
+    textInput: {
+        fontSize:15,
+        fontFamily:'Times New Roman',
+        borderColor: 'black',
+        borderWidth: 1,
+        borderRadius: 8,
+        paddingHorizontal: 10,
+        marginBottom: '3%',
+        backgroundColor:'white'
+    },
+    label: {
+        paddingLeft: 7,
+        fontSize: 20,
+        fontWeight: "bold",
+        fontFamily:'Times New Roman',
+        color: '#1e2620',
+        marginBottom: 5
+    },
+    heading:{
+        fontSize:50,
+        fontWeight:'bold',
+        color:'black',
+    },
+    langText:{
+        fontSize: 30,
+        fontWeight: "bold",
+        fontFamily:'Times New Roman',
+        color: '#1e2620',
+        marginBottom: '2%',
+        marginTop: '2%',
+        paddingLeft: 15,
+        paddingRight: 20,
     }
-
 })
