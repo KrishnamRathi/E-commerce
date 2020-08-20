@@ -6,6 +6,7 @@ import { Context as AuthContext } from '../../context/AuthContext'
 export default function Select({navigation}) {
 
     const { login } = useContext(AuthContext);
+
     const [lang,setLang]=useState('en');
 
     return (
