@@ -37,7 +37,7 @@ export default function CustomDrawer({ navigation }) {
                     <Text style={styles.drawerText}>Profile</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.drawerButton}
-                    onPress={() => navigation.navigate('Profile')}
+                    onPress={() => navigation.navigate('MyOrders')}
                 >
                     <FontAwesome5 name='shopping-bag' color='black' size={30} />
                     <Text style={styles.drawerText}>Orders</Text>
