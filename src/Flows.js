@@ -11,6 +11,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { Context as AuthContext } from './context/AuthContext'
 import CartScreen from './screens/home/CartScreen';
 import Profile from './screens/drawer/Profile'
+import Details from './screens/details/Details'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign'
 
@@ -18,6 +19,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 const LoginStack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
+const HomeStack = createStackNavigator();
 
 const LoginScreens = () => (
     <LoginStack.Navigator initialRouteName='Select' >
@@ -32,6 +34,7 @@ const DrawerScreens = () => (
     <Drawer.Navigator>
         <Drawer.Screen name="Home" component={TabScreens} />
         <Drawer.Screen name="Profile" component={Profile} />
+        <Drawer.Screen name="My Orders" component={Profile} />
         <Drawer.Screen name="Logout" component={HomeScreen} />
     </Drawer.Navigator>
 )
@@ -39,7 +42,7 @@ const DrawerScreens = () => (
 const TabScreens = () => (
     <Tab.Navigator>
         <Tab.Screen name="Home" 
-            component={HomeScreen} 
+            component={HomeScreens} 
             options={{
                 tabBarIcon: ({focused}) => (
                     <MaterialCommunityIcons name="home" color={focused? '#178ae8':'gray'} size={30} />
@@ -56,6 +59,12 @@ const TabScreens = () => (
             
         />
     </Tab.Navigator>
+)
+const HomeScreens = () => (
+    <HomeStack.Navigator>
+        <HomeStack.Screen name='Home' component={HomeScreen} options={{headerShown: false}} />
+        <HomeStack.Screen name='Details' component={Details} options={{headerShown: false}} />
+    </HomeStack.Navigator>
 )
 
 const SplashScreen = () => (
