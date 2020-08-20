@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { StyleSheet, Text, View, ScrollView, FlatList, Image, TouchableOpacity,Button } from 'react-native'
-import { Context as AuthContext } from '../../context/AuthContext'
 import { styles } from '../../styles/styles'
 import { Header } from 'react-native-elements'
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -52,7 +51,7 @@ const images = [
 
 
 export default function HomeScreen({ navigation }) {
-    const { logout } = useContext(AuthContext);
+    
 
     const filters = [
         'Price: high to low',
@@ -112,7 +111,6 @@ export default function HomeScreen({ navigation }) {
                                 showsHorizontalScrollIndicator={false}
                             />
                         </View>
-                        <Button title='logout' onPress={()=> logout()}></Button>
                         <Text style={{ margin: 10, textAlign: 'center', color: 'black', fontWeight: 'bold', fontSize: 20 }}>Popular products</Text>
                     </View>
                 }
