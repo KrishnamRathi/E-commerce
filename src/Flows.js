@@ -14,6 +14,7 @@ import Profile from './screens/drawer/Profile'
 import Details from './screens/details/Details'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign'
+import CustomDrawer from './screens/drawer/CustomDrawer'
 
 
 const LoginStack = createStackNavigator();
@@ -30,17 +31,17 @@ const LoginScreens = () => (
 )
 
 
-const DrawerScreens = () => {
-    const dimensions = useWindowDimensions();
-    return (
-        <Drawer.Navigator drawerType={dimensions.width >= 768 ? 'permanent' : 'front'}>
-            <Drawer.Screen name="Home" component={TabScreens} />
-            <Drawer.Screen name="Profile" component={Profile} />
-            <Drawer.Screen name="My Orders" component={Profile} />
-            <Drawer.Screen name="Logout" component={HomeScreen} />
-        </Drawer.Navigator>
-    )
-}
+const DrawerScreens = () => (
+    <Drawer.Navigator 
+        drawerType={dimensions.width >= 768 ? 'permanent' : 'front'}
+        drawerContent={(props) => <CustomDrawer {...props} /> } 
+    >
+        <Drawer.Screen name="Home" component={TabScreens} />
+        <Drawer.Screen name="Profile" component={Profile} />
+        <Drawer.Screen name="My Orders" component={Profile} />
+        <Drawer.Screen name="Logout" component={HomeScreen} />
+    </Drawer.Navigator>
+)
 
 const TabScreens = () => (
     <Tab.Navigator>
