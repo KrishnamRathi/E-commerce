@@ -7,14 +7,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { SliderBox } from "react-native-image-slider-box";
 import CardComponent from '../../components/CardComponent'
 import FilterButton from '../../components/FilterButton'
-import { abs } from 'react-native-reanimated'
 
 const data = [
     {
         id: 'jhvf7t3fj',
         title: 'Macbook air',
         category: 'Electronics',
-        price: '100000',
+        price: '98000.25',
+        description: 'This is macbook air. The best laptop to buy.',
         image: ['https://images-na.ssl-images-amazon.com/images/I/51TdkJSqeQL._SL1000_.jpg'],
     },
     {
@@ -22,6 +22,7 @@ const data = [
         title: 'Macbook pro',
         category: 'Electronics',
         price: '200000',
+        description: 'This is macbook air. The best laptop to buy.',
         image: ['https://www.notebookcheck.net/uploads/tx_nbc2/Bildschirmfoto_2019-10-01_um_12.20.11.png'],
     },
     {
@@ -29,6 +30,7 @@ const data = [
         title: 'Mustang',
         category: 'Automobile',
         price: '6000000',
+        description: 'This is macbook air. The best laptop to buy.',
         image: ['https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2021-ford-mustang-mach-1-109-1592231891.jpg?crop=0.801xw:0.601xh;0.159xw,0.156xh&resize=1200:*'],
     },
     {
@@ -36,6 +38,7 @@ const data = [
         title: 'Macbook air',
         category: 'Electronics',
         price: '100000',
+        description: 'This is macbook air. The best laptop to buy.',
         image: ['https://images-na.ssl-images-amazon.com/images/I/51TdkJSqeQL._SL1000_.jpg'],
     },
 ]
@@ -118,7 +121,8 @@ export default function HomeScreen({ navigation }) {
                     title={item.title}
                     price={item.price}
                     image={item.image}
-                    id={item.id}  />
+                    id={item.id}
+                    navigation={navigation}  />
                 }
                 ListFooterComponent={
                     <View style={{ marginBottom: 70, }}>

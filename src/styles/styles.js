@@ -21,7 +21,6 @@ export const styles = StyleSheet.create({
         elevation: 9,
     },
     row: {
-        flex: 1,
         flexDirection: 'row'
     },
     column: {
@@ -34,8 +33,8 @@ export const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderColor: 'gray'
     },
-    boldFont:{ 
-        fontSize: 18, 
+    boldFont: {
+        fontSize: 18,
         fontWeight: 'bold'
     },
     image: {
@@ -44,7 +43,7 @@ export const styles = StyleSheet.create({
         borderRadius: 10,
         margin: 5
     },
-    filterButton:{
+    filterButton: {
         zIndex: 100,
         position: 'absolute',
         bottom: 100,
@@ -59,5 +58,43 @@ export const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: 'bold',
         color: 'white'
+    },
+    add: {
+        backgroundColor: '#178ae8',
+        width: 40,
+        height: 40,
+        borderRadius: 1000,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    addText: {
+        color: 'black',
+        fontSize: 18
+    },
+    minus: {
+        backgroundColor: 'gray',
+        width: 40,
+        height: 40,
+        borderRadius: 1000,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    minusText: {
+        color: 'black',
+        fontSize: 18
+    },
+    button: {
+        height: 40,
+        width: 80,
+        backgroundColor: '#178ae8',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10
+    },
+    buttonText:{
+        fontSize: 15,
+        fontWeight: 'bold',
+        color: 'white'
     }
+
 })
