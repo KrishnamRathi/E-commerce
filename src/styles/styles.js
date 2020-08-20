@@ -137,4 +137,17 @@ export const styles = StyleSheet.create({
         marginTop: 15,
         marginBottom:5
     },
+    drawerButton:{
+        borderBottomWidth: 1,
+        width: '80%',
+        alignItems: 'center',
+        borderBottomColor: 'gray',
+        margin: 8,
+        flexDirection: 'row',
+        justifyContent: 'space-evenly'
+    },
+    drawerText: {
+        fontSize: 20,
+        color: 'black'
+    }
 })

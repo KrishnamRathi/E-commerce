@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { createStackNavigator, Header } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -15,6 +15,7 @@ import MyOrders from './screens/drawer/MyOrders'
 import Details from './screens/details/Details'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign'
+import CustomDrawer from './screens/drawer/CustomDrawer'
 
 
 const LoginStack = createStackNavigator();
@@ -30,9 +31,8 @@ const LoginScreens = () => (
     </LoginStack.Navigator>
 )
 
-
 const DrawerScreens = () => (
-    <Drawer.Navigator>
+    <Drawer.Navigator drawerContent={(props) => <CustomDrawer {...props} /> } >
         <Drawer.Screen name="Home" component={TabScreens} />
         <Drawer.Screen name="Profile" component={Profile} />
         <Drawer.Screen name="My Orders" component={MyOrders} />
@@ -42,29 +42,29 @@ const DrawerScreens = () => (
 
 const TabScreens = () => (
     <Tab.Navigator>
-        <Tab.Screen name="Home" 
-            component={HomeScreens} 
+        <Tab.Screen name="Home"
+            component={HomeScreens}
             options={{
-                tabBarIcon: ({focused}) => (
-                    <MaterialCommunityIcons name="home" color={focused? '#178ae8':'gray'} size={30} />
+                tabBarIcon: ({ focused }) => (
+                    <MaterialCommunityIcons name="home" color={focused ? '#178ae8' : 'gray'} size={30} />
                 )
             }}
         />
-        <Tab.Screen name="Cart" 
-            component={CartScreen} 
+        <Tab.Screen name="Cart"
+            component={CartScreen}
             options={{
-                tabBarIcon: ({focused}) => (
-                    <AntDesign name="shoppingcart" color={focused? '#178ae8':'gray'} size={30}/>
+                tabBarIcon: ({ focused }) => (
+                    <AntDesign name="shoppingcart" color={focused ? '#178ae8' : 'gray'} size={30} />
                 )
             }}
-            
+
         />
     </Tab.Navigator>
 )
 const HomeScreens = () => (
     <HomeStack.Navigator>
-        <HomeStack.Screen name='Home' component={HomeScreen} options={{headerShown: false}} />
-        <HomeStack.Screen name='Details' component={Details} options={{headerShown: false}} />
+        <HomeStack.Screen name='Home' component={HomeScreen} options={{ headerShown: false }} />
+        <HomeStack.Screen name='Details' component={Details} options={{ headerShown: false }} />
     </HomeStack.Navigator>
 )
 
@@ -75,7 +75,7 @@ const SplashScreen = () => (
 )
 
 
-const selectFlow =  (flow) => {
+const selectFlow = (flow) => {
 
     switch (flow) {
         case 0:
@@ -92,14 +92,14 @@ const selectFlow =  (flow) => {
 
 export default function Flows() {
     const [flow, setFlow] = useState(0);
-    const {state} =useContext(AuthContext)
+    const { state } = useContext(AuthContext)
 
     //console.log(state)
     useEffect(() => {
-        const set = async ()=>{
+        const set = async () => {
             try {
-                const res=await AsyncStorage.getItem('isLogin');
-                res!=null ? setFlow(2) : setFlow(1);
+                const res = await AsyncStorage.getItem('isLogin');
+                res != null ? setFlow(2) : setFlow(1);
                 //  console.log(res)    
             } catch (err) {
                 console.log(err + "**")
