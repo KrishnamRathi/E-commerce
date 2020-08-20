@@ -14,6 +14,7 @@ import Profile from './screens/drawer/Profile'
 import Details from './screens/details/Details'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign'
+import CustomDrawer from './screens/drawer/CustomDrawer'
 
 
 const LoginStack = createStackNavigator();
@@ -31,7 +32,7 @@ const LoginScreens = () => (
 
 
 const DrawerScreens = () => (
-    <Drawer.Navigator>
+    <Drawer.Navigator drawerContent={(props) => <CustomDrawer {...props} /> } >
         <Drawer.Screen name="Home" component={TabScreens} />
         <Drawer.Screen name="Profile" component={Profile} />
         <Drawer.Screen name="My Orders" component={Profile} />
