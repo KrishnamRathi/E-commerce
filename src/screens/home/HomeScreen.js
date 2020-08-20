@@ -55,11 +55,6 @@ const images = [
 export default function HomeScreen({ navigation }) {
     
 
-    const filters = [
-        'Price: high to low',
-        'Price: low to high'
-    ]
-
     return (
         <SafeAreaView>
             <Header
@@ -113,7 +108,6 @@ export default function HomeScreen({ navigation }) {
                                 showsHorizontalScrollIndicator={false}
                             />
                         </View>
-                        <Button title='logout' onPress={()=> logout()}></Button>
                         <Text style={{ margin: 10, textAlign: 'center', color: 'black', fontWeight: 'bold', fontSize: 20 }}>Popular products</Text>
                     </View>
                 }

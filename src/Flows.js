@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { View, useWindowDimensions} from 'react-native';
+import { View } from 'react-native';
 import { createStackNavigator, Header } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -31,17 +31,17 @@ const LoginScreens = () => (
 )
 
 
-const DrawerScreens = () => (
-    <Drawer.Navigator 
-        drawerType={dimensions.width >= 768 ? 'permanent' : 'front'}
-        drawerContent={(props) => <CustomDrawer {...props} /> } 
-    >
-        <Drawer.Screen name="Home" component={TabScreens} />
-        <Drawer.Screen name="Profile" component={Profile} />
-        <Drawer.Screen name="My Orders" component={Profile} />
-        <Drawer.Screen name="Logout" component={HomeScreen} />
-    </Drawer.Navigator>
-)
+const DrawerScreens = () => {
+    return (
+        <Drawer.Navigator drawerContent={(props) => <CustomDrawer {...props} /> } 
+        >
+            <Drawer.Screen name="Home" component={TabScreens} />
+            <Drawer.Screen name="Profile" component={Profile} />
+            <Drawer.Screen name="My Orders" component={Profile} />
+            <Drawer.Screen name="Logout" component={HomeScreen} />
+        </Drawer.Navigator>
+    )
+}
 
 const TabScreens = () => (
     <Tab.Navigator>
