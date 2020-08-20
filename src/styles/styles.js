@@ -128,5 +128,13 @@ export const styles = StyleSheet.create({
         marginTop: '2%',
         paddingLeft: 15,
         paddingRight: 20,
-    }
+    },
+    labelProfile: {
+        fontSize: 23,
+        fontWeight: "bold",
+        fontFamily:'Times New Roman',
+        color: '#1e2620',
+        marginTop: 15,
+        marginBottom:5
+    },
 })

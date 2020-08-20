@@ -11,6 +11,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { Context as AuthContext } from './context/AuthContext'
 import CartScreen from './screens/home/CartScreen';
 import Profile from './screens/drawer/Profile'
+import MyOrders from './screens/drawer/MyOrders'
 import Details from './screens/details/Details'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign'
@@ -34,7 +35,7 @@ const DrawerScreens = () => (
     <Drawer.Navigator>
         <Drawer.Screen name="Home" component={TabScreens} />
         <Drawer.Screen name="Profile" component={Profile} />
-        <Drawer.Screen name="My Orders" component={Profile} />
+        <Drawer.Screen name="My Orders" component={MyOrders} />
         <Drawer.Screen name="Logout" component={HomeScreen} />
     </Drawer.Navigator>
 )
